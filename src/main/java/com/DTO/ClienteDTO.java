@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.domain.Cliente;
 
+@SuppressWarnings("deprecation")
 public class ClienteDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
