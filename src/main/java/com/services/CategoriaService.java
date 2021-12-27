@@ -1,6 +1,7 @@
 package com.services;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,19 @@ public class CategoriaService {
 	
 	public void delete(Integer id) {
 		try {
+			
 			categoriaRepository.deleteById(id);
+			
 		} catch (DataIntegrityViolationException e) {
+			
 			 throw new DataIntegrityException("Não e Possivel Excluir uma Categoria que possui produtos");
+			 
 		}
 		
+	}
+	
+	public List<Categoria> findAll(){
+		return categoriaRepository.findAll();
 	}
 
 }
