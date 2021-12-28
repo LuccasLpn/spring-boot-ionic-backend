@@ -63,12 +63,10 @@ public class Pedido implements Serializable{
 	public double getTotal() {
 		double sun = 0;
 		for(ItemPedido ip : itens) {
-			sun += ip.getSubTotal();
+			sun = sun + ip.getSubTotal();
 		}
 		return sun;
 	}
-	
-	
 
 	public Set<ItemPedido> getItens() {
 		return itens;
