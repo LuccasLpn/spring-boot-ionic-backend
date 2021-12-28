@@ -1,11 +1,12 @@
-package com.config;
+package com.services;
+
+import java.text.ParseException;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import com.domain.Categoria;
 import com.domain.Cidade;
@@ -29,10 +30,9 @@ import com.repository.ItemPedidoRepository;
 import com.repository.PagamentoRepository;
 import com.repository.PedidoRepository;
 import com.repository.ProdutoRepository;
-
-@Configuration
-public class Instantiation implements CommandLineRunner {
-
+@Service
+public class DBService {
+	
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
@@ -59,10 +59,8 @@ public class Instantiation implements CommandLineRunner {
 	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
-
-	@Override
-	public void run(String... args) throws Exception {
-
+	
+	public void instantiateTestDataBase() throws ParseException {
 		categoriaRepository.deleteAll();
 		produtoRepository.deleteAll();
 		estadoRepository.deleteAll();
@@ -137,6 +135,7 @@ public class Instantiation implements CommandLineRunner {
 
 		clienteRepository.saveAll(Arrays.asList(cli1));
 		enderecoRepository.saveAll(Arrays.asList(e1, e2));
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		
 		Pedido ped1 = new Pedido(null,sdf.parse("30/09/2017 10:32"), cli1, e1);
@@ -166,4 +165,5 @@ public class Instantiation implements CommandLineRunner {
 		
 		itemPedidoRepository.saveAll(Arrays.asList(ip1,ip2,ip3));
 	}
+
 }
