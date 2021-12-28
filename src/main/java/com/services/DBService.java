@@ -61,13 +61,6 @@ public class DBService {
 	private ItemPedidoRepository itemPedidoRepository;
 	
 	public void instantiateTestDataBase() throws ParseException {
-		categoriaRepository.deleteAll();
-		produtoRepository.deleteAll();
-		estadoRepository.deleteAll();
-		cidadeRepository.deleteAll();
-		clienteRepository.deleteAll();
-		enderecoRepository.deleteAll();
-
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		Categoria cat3 = new Categoria(null, "Cama mesa e banho");
