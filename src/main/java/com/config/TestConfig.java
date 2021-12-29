@@ -26,11 +26,6 @@ public class TestConfig {
 	}
 	
 	@Bean
-	public EmailService emailService() {
-		return (EmailService) new MockEmailService();
-	}
-	
-	@Bean
 	public EmailService emailServicesmt() {
 		return new SmtpEmailService();
 	}
