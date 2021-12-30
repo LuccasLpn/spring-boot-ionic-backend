@@ -6,21 +6,55 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<body>
-	<div>
-		<h1>
-			Pedido número: <span th:text="${pedido.id}"> </span>
-		</h1>
-		<p>
-			Instante: <span th:text="${#dates.format(pedido.instant, 'dd/MM/yyyy hh:mm')}"></span>
-		</p>
-		<p>
-			Cliente: <span th:text="${pedido.cliente.name}"></span>
-		</p>
-		<p>
-			Situação do pagamento: <span th:text="${pedido.pagamento.estado.description}"></span>
-		</p>
-		<h3>Detalhes do pedido:</h3>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+	body{
+		background-color: bisque;
+	}
+	.text{
+	text-align: center;
+	}
+	.Container{
+	display: block;
+	width: 100%;
+	}
+	.Container > .table{
+	width: 100%;
+	}
+	.Container > .table > table{
+	margin: 0 auto;
+	background-image: url("../../static/pedidofundo.jpg");
+  	background-repeat: no-repeat;
+  	background-position-x: 80%;
+	}
+	.Valor{
+	text-align: center;
+	}
+</style>
+
+
+	<body>
+		<div class="Container">
+		 <div class="text">
+			<h1>
+				Pedido número: <span th:text="${pedido.id}"> </span>
+			</h1>
+			<p>
+				Instante: <span th:text="${#dates.format(pedido.instant, 'dd/MM/yyyy HH:mm')}"></span>
+			</p>
+			<p>
+				Cliente: <span th:text="${pedido.cliente.name}"></span>
+			</p>
+			<p>
+				Situação do pagamento: <span th:text="${pedido.pagamento.estado.description}"></span>
+			</p>
+			<h3>Detalhes do pedido:</h3>
+		 </div>
+		<div class="table">
 		<table border="1">
 			<tr>
 				<th>Produto</th>
@@ -32,16 +66,21 @@
 				<td th:text="${item.produto.name}">name</td>
 				<td th:text="${item.quantity}">quantity</td>
 				<td th:text="${#numbers.formatDecimal(item.price, 0, 'POINT', 2,
-'COMMA')}">price</td>
+		'COMMA')}">price</td>
 				<td th:text="${#numbers.formatDecimal(item.subTotal, 0, 'POINT', 2,
-'COMMA')}">subTotal</td>
+		'COMMA')}">subTotal</td>
 			</tr>
 		</table>
-		<p>
-			Valor total: <span th:text="${#numbers.formatDecimal(pedido.getvalorTotal, 0,
-'POINT', 2, 'COMMA')}"></span>
-		</p>
-	</div>
-</body>
-
+		</div>
+			<p>
+				<div class="Valor">
+					<b>
+				Valor total: <span th:text="${#numbers.formatDecimal(pedido.getvalorTotal, 0,
+				'POINT', 2, 'COMMA')}"></span>
+				</b>
+				</div>
+			</p>
+		</div>
+		</div>
+	  </body>
 </html>

@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 
 import com.services.DBService;
 import com.services.EmailService;
-import com.services.MockEmailService;
 import com.services.SmtpEmailService;
 
 @Configuration

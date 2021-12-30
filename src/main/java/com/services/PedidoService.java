@@ -43,7 +43,8 @@ public class PedidoService {
 	
 	public Pedido findById(Integer id) {
 		Optional<Pedido> obj = pedidoRepository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado " + id ));
+		return obj.orElseThrow(() -> 
+		new ObjectNotFoundException("Objeto não encontrado " + id ));
 		
 	}
 	

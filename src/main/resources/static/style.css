@@ -1,0 +1,23 @@
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+	body{
+	background-color: beige;
+	}
+	.text{
+	text-align: center;
+	}
+	.Container{
+	display: block;
+	width: 100%;
+	}
+	.Container > .table{
+	width: 100%;
+	}
+	.Container > .table > table{
+	margin: 0 auto;
+	}
+</style>

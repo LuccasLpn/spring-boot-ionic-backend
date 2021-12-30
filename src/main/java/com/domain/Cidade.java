@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Cidade implements Serializable{
-	
 
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,6 +25,7 @@ public class Cidade implements Serializable{
 	@JoinColumn(name = "estado_id")
 	private Estado estado;
 	
+	
 	public Cidade() {
 		
 	}
@@ -35,6 +36,7 @@ public class Cidade implements Serializable{
 		this.name = name;
 		this.estado = estado;
 	}
+	
 
 	public Integer getId() {
 		return id;
@@ -76,4 +78,6 @@ public class Cidade implements Serializable{
 		Cidade other = (Cidade) obj;
 		return Objects.equals(id, other.id);
 	}
+	
+	
 }
