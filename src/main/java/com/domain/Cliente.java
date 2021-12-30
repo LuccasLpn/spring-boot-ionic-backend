@@ -34,6 +34,9 @@ public class Cliente implements Serializable {
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
+	private String senha;
+	
+
 
 	@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -51,16 +54,23 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String name, String email, String cpfOuCnpj, TipoCliente tipo) {
+	public Cliente(Integer id, String name, String email, String cpfOuCnpj, TipoCliente tipo, String senha) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.tipo = (tipo == null ) ? null : tipo.getCod();
+		this.senha = senha;
 	}
-	
-	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	public Set<Pedido> getPedidos() {
 		return pedidos;

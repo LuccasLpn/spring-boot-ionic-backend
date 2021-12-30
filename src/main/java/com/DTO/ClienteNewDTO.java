@@ -31,6 +31,10 @@ public class ClienteNewDTO implements Serializable{
 	
 	@SuppressWarnings("deprecation")
 	@NotEmpty(message = "Prenchimento Obrigatorio")
+	private String senha;
+	
+	@SuppressWarnings("deprecation")
+	@NotEmpty(message = "Prenchimento Obrigatorio")
 	private String logradouro;
 	
 	@SuppressWarnings("deprecation")
@@ -45,6 +49,7 @@ public class ClienteNewDTO implements Serializable{
 	@NotEmpty(message = "Prenchimento Obrigatorio")
 	private String cep;
 	
+	@SuppressWarnings("deprecation")
 	@NotEmpty(message = "Prenchimento Obrigatorio")
 	private String telefone1;
 	
@@ -58,6 +63,13 @@ public class ClienteNewDTO implements Serializable{
 		
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	public String getName() {
 		return name;
