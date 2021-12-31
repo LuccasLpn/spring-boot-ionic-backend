@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +20,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.domain.enums.Perfil;
 import com.domain.enums.TipoCliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -41,6 +44,11 @@ public class Cliente implements Serializable {
 	@Fetch(FetchMode.JOIN)
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private Set<Endereco> enderecos = new HashSet<>();
+	
+	@ElementCollection(fetch = FetchType.EAGER)
+	@CollectionTable(name = "PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
+	
 
 	@Fetch(FetchMode.JOIN)
 	@ElementCollection
@@ -52,6 +60,7 @@ public class Cliente implements Serializable {
 	private Set<Pedido> pedidos = new HashSet<>();
 
 	public Cliente() {
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public Cliente(Integer id, String name, String email, String cpfOuCnpj, TipoCliente tipo, String senha) {
@@ -62,6 +71,15 @@ public class Cliente implements Serializable {
 		this.cpfOuCnpj = cpfOuCnpj;
 		this.tipo = (tipo == null ) ? null : tipo.getCod();
 		this.senha = senha;
+		addPerfil(Perfil.CLIENTE);
+	}
+	
+	public Set<Perfil> getPerfils(){
+	return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
 	}
 
 	public String getSenha() {
