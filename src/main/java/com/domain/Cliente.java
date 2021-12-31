@@ -82,6 +82,7 @@ public class Cliente implements Serializable {
 		perfis.add(perfil.getCod());
 	}
 
+	@JsonIgnore
 	public String getSenha() {
 		return senha;
 	}

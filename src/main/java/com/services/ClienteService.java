@@ -18,9 +18,12 @@ import com.DTO.ClienteNewDTO;
 import com.domain.Cidade;
 import com.domain.Cliente;
 import com.domain.Endereco;
+import com.domain.enums.Perfil;
 import com.domain.enums.TipoCliente;
 import com.repository.ClienteRepository;
 import com.repository.EnderecoRepository;
+import com.security.UserSS;
+import com.services.exceptions.AuthorizationException;
 import com.services.exceptions.DataIntegrityException;
 import com.services.exceptions.ObjectNotFoundException;
 
@@ -37,6 +40,13 @@ public class ClienteService {
 	private EnderecoRepository enderecoRepository;
 	
 	public Cliente findById(Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+			
+			
 		Optional<Cliente> obj = clienteRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado " + id ));
 		
