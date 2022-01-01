@@ -62,7 +62,7 @@ public class Cliente implements Serializable {
 	public Cliente() {
 		addPerfil(Perfil.CLIENTE);
 	}
-	private String imageUrl;
+
 
 	public Cliente(Integer id, String name, String email, String cpfOuCnpj, TipoCliente tipo, String senha) {
 		super();
@@ -74,15 +74,7 @@ public class Cliente implements Serializable {
 		this.senha = senha;
 		addPerfil(Perfil.CLIENTE);
 	}
-	public String getImageUrl() {
-		return imageUrl;
-	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	
 	public Set<Perfil> getPerfils(){
 	return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
