@@ -12,7 +12,6 @@ public class SpringBtIonicApplication implements CommandLineRunner{
 		SpringApplication.run(SpringBtIonicApplication.class, args);
 		
 	}
-
 	@Override
 	public void run(String... args) throws Exception {
 		

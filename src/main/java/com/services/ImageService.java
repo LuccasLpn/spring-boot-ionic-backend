@@ -27,12 +27,17 @@ public class ImageService {
 		}
 		try {
 			BufferedImage img = ImageIO.read(uploadedFile.getInputStream());
+			
 			if("png".equals(ext)) {
 				img = pngToJpg(img);
 			}
+			
 			return img;
+			
 		} catch (IOException e) {
+			
 			throw new FileException("Erro ao ler arquivo! ");
+			
 		}
 		
 	}
