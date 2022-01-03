@@ -9,7 +9,7 @@ public class SpringBtIonicApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		
-		SpringApplication.run(SpringBtIonicApplication.class, args);
+	SpringApplication.run(SpringBtIonicApplication.class, args);
 		
 	}
 	
